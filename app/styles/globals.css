@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=IM+Fell+English:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Jim+Nightshade&family=Pangolin&display=swap');
+
+@font-face {
+  font-family: 'Grotesque';
+  src: url('/fonts/BrandonGrotesque-Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Grotesque Black';
+  src: url('/fonts/BrandonGrotesque-Black.woff') format('woff');
+  font-weight: bold;
+}
+/* Fonts */
+.im-fell-english {
+  font-family: 'IM Fell English', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.almendra {
+  font-family: 'Almendra', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cinzel-title {
+  font-family: 'Cinzel', serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+.cinzel-subtitle {
+  font-family: 'Cinzel', serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.pangolin {
+  font-family: 'Pangolin', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+/* fonts */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes salto {
+  0% {
+    transform: scaleX(1.25);
+  }
+  100% {
+    transform: translateY(-50px) scaleX(1);
+  }
+}
+
+.animate-bounce-salto {
+  animation: salto 0.5s infinite alternate;
+}
+
+.delay-150 {
+  animation-delay: 0.18s;
+}
+
+.delay-300 {
+  animation-delay: 0.37s;
+}
+
+@keyframes wave {
+  0% {
+    transform: skewY(0deg) translateY(0px);
+    border-radius: 0;
+  }
+  25% {
+    transform: skewY(2deg) translateY(-2px);
+    border-radius: 10px 10px 0 0;
+  }
+  50% {
+    transform: skewY(-3deg) translateY(5px);
+    border-radius: 5px 5px 0 0;
+  }
+  75% {
+    transform: skewY(2deg) translateY(-3px);
+    border-radius: 10px 10px 0 0;
+  }
+  100% {
+    transform: skewY(0deg) translateY(0px);
+    border-radius: 0;
+  }
+}
+
+.wave-animation {
+  animation: wave 4s infinite ease-in-out;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #718096;
+}
+
+.bg-stars {
+  background: #0c1020;
+  background-image: radial-gradient(
+      circle,
+      rgba(249, 171, 14, 0.52) 2px,
+      transparent 2px
+    ),
+    radial-gradient(circle, rgba(231, 185, 20, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 200, 0, 0.58) 0.5px, transparent 0.5px);
+
+  background-size:
+    400px 400px,
+    200px 200px,
+    100px 100px;
+
+  background-position:
+    0 0,
+    150px 180px,
+    50px 80px;
+
+  background-repeat: repeat;
+}
+
+.house-banner {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.house-banner:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bg-banner {
+  color: #ffffff;
+  -webkit-text-stroke: 0.8px #0a0a0a;
+}
+
+.button-quiz {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: 4px 4px 0 0 #422800;
+  color: #422800;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 0 24px;
+  line-height: 50px;
+  text-align: center;
+  user-select: none;
+  min-width: 120px;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.button-quiz:hover {
+  background-color: white;
+  transform: scale(1.05);
+}
+
+.button-quiz:active {
+  box-shadow: 2px 2px 0 0 #422800;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-quiz {
+    padding: 0 32px;
+  }
+}
+
+@layer base {
+  .card {
+    @apply relative flex items-end p-4 w-full text-center bg-white shadow-md overflow-hidden;
+  }
+
+  .btn {
+    @apply mt-4 px-6 py-2 text-sm font-bold uppercase tracking-wide text-white bg-black;
+  }
+
+  .btn:hover {
+    background-color: #333333;
+  }
+
+  .card-bg {
+    background-image: url('/img/castillo.png');
+    @apply absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out;
+  }
+
+  .group:hover .card-bg {
+    transform: scale(1.1);
+  }
+
+  .group:hover .content {
+    transform: translateY(0);
+  }
+
+  .content {
+    @apply relative flex flex-col items-center w-full p-4 z-10;
+    transition: transform var(--d) var(--e);
+    transform: translateY(100%);
+  }
+}

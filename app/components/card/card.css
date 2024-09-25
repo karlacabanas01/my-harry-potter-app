@@ -1,0 +1,106 @@
+body {
+  background-color: rgb(22, 20, 24);
+  color: #eee;
+  user-select: none;
+}
+
+.nft-card {
+  max-width: 400px;
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(
+    0deg,
+    rgba(40, 44, 52, 1) 0%,
+    rgba(17, 0, 32, 0.5) 100%
+  );
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: 0.7rem;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: 0.5s all;
+  position: relative;
+}
+
+.tokenImage {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.description {
+  margin: 0.5rem 0;
+  color: #a89ec9;
+}
+
+.tokenInfo .price {
+  color: #ee83e5;
+}
+
+.tokenInfo .duration {
+  color: #a89ec9;
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #88888855;
+  margin-top: 0;
+}
+
+.creator {
+  margin-top: 0.2rem;
+  margin-bottom: -0.3rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff22;
+  padding: 0.3rem;
+  margin-right: 0.5rem;
+  border-radius: 100%;
+  box-shadow: inset 0 0 0 4px #000000aa;
+}
+
+.creatorImage {
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.nft-card::before {
+  position: fixed;
+  content: '';
+  box-shadow: 0 0 100px 40px #ffffff08;
+  top: -10%;
+  left: -100%;
+  transform: rotate(-45deg);
+  height: 60rem;
+  transition: 0.7s all;
+}
+
+.nft-card:hover::before {
+  filter: brightness(0.5);
+  top: -100%;
+  left: 200%;
+}
+
+.nft-card:hover {
+  border: 1px solid #ffffff44;
+  box-shadow: 0 7px 50px 10px #000000aa;
+  transform: scale(1.015);
+  filter: brightness(1.3);
+}
+
+.bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg h1 {
+  font-size: 20rem;
+  filter: opacity(0.5);
+}
