@@ -10,6 +10,7 @@ type Spell = {
   hechizo: string;
   uso: string;
 };
+
 // Si no me convence puedo usar un btn https://codepen.io/fedeperin/pen/vYPNOxz
 const CardSpells = ({ title, copy, onMouseEnter }: CardProps) => {
   return (
@@ -21,7 +22,8 @@ const CardSpells = ({ title, copy, onMouseEnter }: CardProps) => {
         <h2 className="text-lg font-bold">{title}</h2>
         <p className="font-serif italic text-sm">{copy}</p>
       </div>
-      <div className="absolute inset-0 bg-cover bg-center card-bg transition-transform duration-700 ease-out transform group-hover:scale-110"></div>
+      <div className="absolute inset-0 bg-slate-500 bg-cover bg-center  transition-transform duration-700 ease-out transform group-hover:scale-110"></div>
+
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
     </div>
   );
@@ -66,8 +68,8 @@ const ContentCardSpells: React.FC = () => {
       {[0, 1, 2, 3].map((index) => (
         <CardSpells
           key={index}
-          title={randomSpells[index]?.hechizo || 'Hover para ver un hechizo'}
-          copy={randomSpells[index]?.uso || ''}
+          title={randomSpells[index]?.hechizo ?? 'Hover para ver un hechizo'}
+          copy={randomSpells[index]?.uso ?? ''}
           onMouseEnter={() => handleMouseEnter(index)}
         />
       ))}

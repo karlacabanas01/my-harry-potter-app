@@ -56,24 +56,25 @@ const BooksList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-500 ease-in-out">
+      <ul className="grid grid-cols-2 md:grid-cols-4 gap-8 transition-all duration-500 ease-in-out">
         {detailedBooks.slice(0, visibleBooks).map((book) => (
           <li
             key={book.title}
             id={book.title}
-            className="p-4 border rounded-xl shadow"
+            className="p-4 border rounded-lg shadow-lg transition-transform hover:scale-105"
           >
             {book.cover && (
-              <div className="flex justify-center items-center flex-col pb-4 ">
+              <div className="flex justify-center items-center flex-col pb-4">
                 <Image
                   src={book.cover}
                   alt={book.title}
                   width={200}
-                  height={200}
+                  height={300}
+                  className="object-cover rounded-lg"
                 />
               </div>
             )}
-            <ButtonMore label="Más" onClick={() => openModal(book)} />
+            <ButtonMore label="Abrir" onClick={() => openModal(book)} />
           </li>
         ))}
       </ul>
@@ -82,7 +83,7 @@ const BooksList = () => {
         {visibleBooks < detailedBooks.length && (
           <button
             onClick={showMoreBooks}
-            className="px-4 py-2 bg-[#946b2d] text-white rounded-xl hover:bg-[#726255] border-4 border-[#946b2d] transition-all duration-300 ease-in-out"
+            className="px-6 py-2 bg-[#946b2d] text-white font-bold rounded-full shadow-lg hover:bg-[#b58e24] hover:shadow-[0_0_15px_#d3a625] transition-all duration-300 ease-in-out flex items-center gap-2"
           >
             Ver más
           </button>
@@ -90,9 +91,8 @@ const BooksList = () => {
 
         {visibleBooks > initialVisibleBooks && (
           <button
-            id="view-less-button"
             onClick={showLessBooks}
-            className="px-4 py-2 bg-[#740001] text-white rounded-xl hover:bg-red-600 border-4 border-[#740001] transition-all duration-300 ease-in-out"
+            className="px-6 py-2 bg-[#740001] text-white font-bold rounded-full shadow-lg hover:bg-[#b22222] hover:shadow-[0_0_15px_#4b0001] transition-all duration-300 ease-in-out flex items-center gap-2"
           >
             Ver menos
           </button>

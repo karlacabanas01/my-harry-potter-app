@@ -4,6 +4,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=IM+Fell+English:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Jim+Nightshade&family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 
 @font-face {
   font-family: 'Grotesque';
@@ -221,11 +224,6 @@ body {
     background-color: #333333;
   }
 
-  .card-bg {
-    background-image: url('/img/castillo.png');
-    @apply absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out;
-  }
-
   .group:hover .card-bg {
     transform: scale(1.1);
   }
@@ -239,4 +237,22 @@ body {
     transition: transform var(--d) var(--e);
     transform: translateY(100%);
   }
+}
+
+.daily-prophet-bg {
+  background-color: #f4e2c5;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Textura de papel */
+  background-size: cover;
+  background-repeat: repeat;
+  font-family: 'Georgia', serif;
+  color: #1c1c1c;
+  padding: 20px;
+  border-radius: 5px;
+}
+.daily-prophet-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1c1c1c;
+  text-align: center;
 }
