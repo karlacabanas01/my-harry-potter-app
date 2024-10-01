@@ -19,11 +19,10 @@
   src: url('/fonts/BrandonGrotesque-Black.woff') format('woff');
   font-weight: bold;
 }
+
 /* Fonts */
 .im-fell-english {
-  font-family: 'IM Fell English', serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: 'IM Fell English', 'Lucida Handwriting', cursive;
 }
 
 .almendra {
@@ -255,4 +254,19 @@ body {
   font-weight: bold;
   color: #1c1c1c;
   text-align: center;
+}
+@layer utilities {
+  .splash {
+    width: 30px;
+    height: 30px;
+    background:
+      repeating-conic-gradient(#403323 0 3%, #0000 0 11%),
+      repeating-conic-gradient(#0000 0 5%, #403323 0 7%) 50% / 10% 10%,
+      repeating-conic-gradient(#0000 0 7%, #403323 0 9%) 50% / 15% 15%,
+      repeating-conic-gradient(#0000 0 11%, #403323 0 13%) 50% / 20% 20%,
+      radial-gradient(#403323 22%, #0000 0),
+      rgba(255, 255, 255, 0);
+    background-repeat: no-repeat;
+    filter: blur(2px) contrast(50);
+  }
 }

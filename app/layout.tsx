@@ -1,6 +1,4 @@
 import './styles/globals.css';
-import { Footer } from './components/footer';
-import { Navbar } from './components/navbar';
 
 export const metadata = {
   title: 'Harry Potter Page',
@@ -14,12 +12,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/img/logo.png" />
+      </head>
       <body className="min-h-screen flex flex-col justify-between overflow-x-hidden bg-stars">
-        <Navbar />
         <main className="flex-grow max-w-full overflow-hidden mx-auto">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );

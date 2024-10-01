@@ -1,14 +1,16 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { Character } from '../../utils/types';
-import { capitalizeFirstLetter, formatDateOfBirth } from '../../utils/format';
-import IconButton from '../button/button';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BsCalendarDate } from 'react-icons/bs';
+import { FaHouseChimney } from 'react-icons/fa6';
+import { LuWand } from 'react-icons/lu';
+
+import { capitalizeFirstLetter, formatDateOfBirth } from '../../utils/format';
+import { Character } from '../../utils/types';
+import IconButton from '../button/button-icon';
+
 import '../card/card.css';
 import Image from 'next/image';
-import { FaHouseChimney } from 'react-icons/fa6';
-import { BsCalendarDate } from 'react-icons/bs';
-import { LuWand } from 'react-icons/lu';
 
 interface Props {
   character: Character;
@@ -40,28 +42,32 @@ export default function CharacterModal({ character, onClose }: Props) {
             <div className="flex justify-center items-center">
               <Image
                 className="tokenImage rounded-lg shadow-xl"
-                src={character.image}
-                alt={character.name}
+                src={character.attributes.image}
+                alt={character.attributes.name}
                 width={200}
                 height={200}
               />
             </div>
-            <h2 className="text-md mt-4 cinzel-title">{character.name}</h2>
+            <h2 className="text-md mt-4 cinzel-title">
+              {character.attributes.name}
+            </h2>
             <p className="description">
-              {character.alternate_names.join(', ')}
+              {character.attributes.alias_names.join(', ')}
             </p>
             <div className="tokenInfo flex items-center mt-8 space-x-4">
               <div className="price flex items-center font-bold p-4 ">
                 <FaHouseChimney className="text-lg" />
                 <p className="ml-2">
-                  {capitalizeFirstLetter(character.house) || 'No hay datos'}
+                  {capitalizeFirstLetter(character.attributes.house) ||
+                    'No hay datos'}
                 </p>
               </div>
 
               <div className="duration flex items-center">
                 <BsCalendarDate className="text-lg" />
                 <p className="ml-2 whitespace-nowrap">
-                  {formatDateOfBirth(character.dateOfBirth)}
+                  {formatDateOfBirth(character.attributes.died) ||
+                    'No hay datos'}
                 </p>
               </div>
             </div>
@@ -71,7 +77,7 @@ export default function CharacterModal({ character, onClose }: Props) {
                 <LuWand />
                 <p className="ml-2">
                   Patronus:{' '}
-                  {capitalizeFirstLetter(character.patronus) ||
+                  {capitalizeFirstLetter(character.attributes.patronus) ||
                     'No se encuentra'}
                 </p>
               </div>
@@ -79,8 +85,8 @@ export default function CharacterModal({ character, onClose }: Props) {
             <hr className="my-4" />
             <div className="creator flex flex-col items-center justify-start description">
               <p className="text-lg">
-                {character.wand.wood && character.wand.core
-                  ? `La varita es de ${capitalizeFirstLetter(character.wand.wood)}, hecha de ${character.wand.core}.`
+                {character.attributes.wands
+                  ? `${capitalizeFirstLetter(character.attributes.wands[0])}.`
                   : 'Datos de varita no encontrados.'}
               </p>
             </div>

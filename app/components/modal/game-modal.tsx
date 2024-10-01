@@ -1,5 +1,6 @@
-import IconButton from '../button/button';
 import { AiOutlineClose } from 'react-icons/ai';
+
+import IconButton from '../button/button-icon';
 import Game from '../game';
 
 interface Props {

@@ -1,13 +1,29 @@
+import Image from 'next/image';
+
 export default function Loading() {
   return (
-    <div className="grid place-content-center h-screen">
-      <div className="flex items-end justify-between w-36 h-8 mx-auto flex-wrap">
-        <div className="w-4 h-4 bg-cyan-500 rounded-full animate-bounce-salto"></div>
-        <div className="w-4 h-4 bg-cyan-500 rounded-full animate-bounce-salto delay-150"></div>
-        <div className="w-4 h-4 bg-cyan-500 rounded-full animate-bounce-salto delay-300"></div>
-        <span className="block text-xl uppercase pt-5 text-cyan-500">
-          Cargando...
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-no-repeat bg-center bg-cover"
+      style={{ backgroundImage: 'url(/img/bg.jpg)' }}
+    >
+      <div className="relative z-10 flex items-center justify-center space-x-6">
+        <Image
+          src="/img/pies.gif"
+          alt="Cargando..."
+          width={160}
+          height={160}
+          className="transform rotate-6"
+        />
+        <span className="text-4xl font-bold text-gray-900 im-fell-english">
+          Loading...
         </span>
+        <Image
+          src="/img/pies.gif"
+          alt="Rotando..."
+          width={160}
+          height={160}
+          className="transform scale-x-[-1] rotate-12"
+        />
       </div>
     </div>
   );

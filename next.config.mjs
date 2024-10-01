@@ -2,10 +2,9 @@
 const nextConfig = {
   images: {
     domains: [
-      'ik.imagekit.io',
+      'static.wikia.nocookie.net',
       'www.wizardingworld.com',
-      'images.unsplash.com',
-      'raw.githubusercontent.com',
+      'ik.imagekit.io',
     ],
   },
 };

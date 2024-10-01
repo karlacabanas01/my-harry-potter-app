@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
+
 import { questions } from '../utils/data';
 
 type House = 'Gryffindor' | 'Hufflepuff' | 'Ravenclaw' | 'Slytherin';

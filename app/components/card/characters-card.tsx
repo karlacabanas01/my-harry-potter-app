@@ -1,11 +1,12 @@
 import React from 'react';
 import './card.css';
 import Image from 'next/image';
-import { Character } from '@/app/utils/types';
 import { BsCalendarDate } from 'react-icons/bs';
-import { capitalizeFirstLetter, formatDateOfBirth } from '@/app/utils/format';
-import { LuWand } from 'react-icons/lu';
 import { FaHouseChimney } from 'react-icons/fa6';
+import { LuWand } from 'react-icons/lu';
+
+import { capitalizeFirstLetter, formatDateOfBirth } from '@/app/utils/format';
+import { Character } from '@/app/utils/types';
 
 interface Props {
   character: Character;

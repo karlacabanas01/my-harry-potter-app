@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         grotesque: ['Grotesque', 'sans-serif'],
+        'im-fell-english': ['IM Fell English SC', 'serif'],
       },
     },
   },

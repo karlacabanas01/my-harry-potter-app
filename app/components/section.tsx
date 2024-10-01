@@ -1,7 +1,7 @@
 interface Props {
   title: string;
   id: string;
-  description: string;
+  description?: string;
   children: React.ReactNode;
 }
 
