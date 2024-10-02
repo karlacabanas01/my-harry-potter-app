@@ -49,12 +49,12 @@ export function Product({
             <AddToCartButton
               product={product}
               selectedSize={selectedSize}
-              addToCart={() => addToCart(product, selectedSize)} // Pasa la talla al carrito
+              addToCart={() => addToCart(product, selectedSize)}
               isDisabled={isDisabled}
             />
           </div>
 
-          {product.nombre.includes('Sudadera') && (
+          {product.nombre.includes('Hoodie') && (
             <div>
               <label
                 htmlFor={`size-${product.id}`}

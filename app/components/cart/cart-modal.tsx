@@ -6,15 +6,17 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { PayModal } from './pay-modal';
 import { ThankYouModal } from './thankyou-modal';
 import { IoMdAdd } from 'react-icons/io';
+import ButtonPage from '../button/button-page';
+import { useRouter } from 'next/navigation';
+import { TbMoodSad } from 'react-icons/tb';
 
 interface CartModalProps {
-  cart: CartItem[]; // El carrito contiene CartItem[], no ProductoHarryPotter[]
+  cart: CartItem[];
   addToCart: (product: CartItem['producto'], size?: string) => void;
-  removeFromCart: (productId: number, size?: string) => void; // Acepta la talla opcional
+  removeFromCart: (productId: number, size?: string) => void;
   onClose: () => void;
 }
 
-// TOTAL DE LA COMPRA
 const CartModal = ({
   cart,
   addToCart,
@@ -27,11 +29,9 @@ const CartModal = ({
   const [selectedProduct, setSelectedProduct] = useState<{
     id: number;
     size?: string;
-  } | null>(null); // Producto seleccionado para eliminar
-
-  const handleClosePaymentModal = () => {
-    setShowPaymentModal(false);
-  };
+  } | null>(null);
+  const router = useRouter();
+  const handleClosePaymentModal = () => {};
 
   const handlePaymentSuccess = () => {
     setShowPaymentModal(false);
@@ -46,93 +46,143 @@ const CartModal = ({
     setShowPaymentModal(true);
   };
 
-  // Función para abrir el modal de confirmación
   const confirmDelete = (productId: number, size?: string) => {
     setSelectedProduct({ id: productId, size });
-    setShowConfirmModal(true); // Muestra el modal de confirmación
+    setShowConfirmModal(true);
   };
 
-  // Función para manejar la confirmación de eliminación
   const handleConfirmDelete = () => {
     if (selectedProduct) {
-      removeFromCart(selectedProduct.id, selectedProduct.size); // Elimina el producto
-      setShowConfirmModal(false); // Cierra el modal
-      setSelectedProduct(null); // Resetea el producto seleccionado
+      removeFromCart(selectedProduct.id, selectedProduct.size);
+      setShowConfirmModal(false);
+      setSelectedProduct(null);
     }
   };
 
-  // Función para cerrar el modal de confirmación
   const handleCloseModal = () => {
     setShowConfirmModal(false);
     setSelectedProduct(null);
   };
 
+  const total = cart.reduce(
+    (acc, item) => acc + item.producto.precio * item.cantidad,
+    0,
+  );
+
   return (
     <>
       {!showThankYouModal && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-slate-800 rounded-lg shadow-lg p-6 max-w-lg w-full">
+          <div className="bg-slate-800 rounded-2xl shadow-lg px-6 py-4 max-w-2xl w-ful">
             <button
               className="ml-auto flex text-2xl text-gray-200 hover:text-red-500"
               onClick={onClose}
             >
               <IoCloseCircleOutline size={30} />
             </button>
-
-            <h2 className="text-2xl font-bold mb-4 text-white">
-              Carrito de Compras
-            </h2>
-
+            <div className="flex flex-col items-center justify-center">
+              <h1 className="text-3xl font-bold mb-4 text-white">My Cart</h1>
+            </div>
             {cart.length > 0 ? (
-              <ul className="space-y-4">
-                {cart.map((item) => (
-                  <li
-                    key={`${item.producto.id}-${item.size || 'default'}`} // Diferenciar por producto y talla
-                    className="text-gray-700 border p-4 flex justify-between items-center bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300"
+              <>
+                <div className="max-h-96 overflow-y-auto bg-transparent px-2 scroll-smooth">
+                  {cart.map((item) => (
+                    <div
+                      key={item.producto.id}
+                      className="flex flex-col md:flex-row justify-between items-center mr-2 mb-4 p-4 border-b border-gray-200 bg-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    >
+                      <div className="flex items-center w-full md:flex-grow">
+                        <img
+                          src={item.producto.imagen}
+                          alt={item.producto.nombre}
+                          className="w-16 h-16 md:w-24 md:h-24 mr-4 rounded-lg"
+                        />
+                        <div>
+                          <span className="text-lg font-bold text-gray-700 block">
+                            {item.producto.nombre}
+                          </span>
+                          <div className="flex items-center mt-2 mb-2">
+                            <input
+                              type="number"
+                              value={item.cantidad}
+                              min="1"
+                              className="w-12 p-1 border border-gray-400 rounded mr-2 text-center text-gray-700"
+                              readOnly
+                            />
+                            <span className="text-gray-500 text-sm md:text-base">
+                              x{' '}
+                              {item.producto.precio.toLocaleString('es-CL', {
+                                style: 'currency',
+                                currency: 'CLP',
+                                minimumFractionDigits: 0,
+                              })}
+                            </span>
+                          </div>
+                          <hr className="border-gray-400 my-2" />
+                          <span className="text-lg font-bold text-gray-800 my-4">
+                            Total{' '}
+                            {(
+                              item.producto.precio * item.cantidad
+                            ).toLocaleString('es-CL', {
+                              style: 'currency',
+                              currency: 'CLP',
+                              minimumFractionDigits: 0,
+                            })}
+                          </span>
+
+                          {item.size && (
+                            <div className="text-sm text-gray-500 mt-1">
+                              Size: {item.size}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-end w-full md:w-1/3">
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => addToCart(item.producto, item.size)}
+                            className="bg-green-500 text-white font-bold p-2 rounded-full mr-2 hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105"
+                          >
+                            <IoMdAdd />
+                          </button>
+
+                          <button
+                            onClick={() =>
+                              confirmDelete(item.producto.id, item.size)
+                            }
+                            className="bg-red-500 text-white font-bold p-2 rounded-full mr-2 hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105"
+                          >
+                            <MdDeleteOutline />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col justify-end items-end mt-4 w-full">
+                  <div className="text-gray-300 text-xl font-semibold my-4">
+                    Grand Total: ${total.toLocaleString('es-CL')}
+                  </div>
+                  <button
+                    onClick={handlePayment}
+                    className="bg-yellow-600 w-full font-bold py-2 px-4 rounded-xl mt-4 hover:bg-yellow-500 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500"
                   >
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">
-                        {item.producto.nombre}
-                      </h3>
-                      <p>{item.producto.descripcion}</p>
-                      <p className="my-2 font-semibold ">
-                        Precio: ${item.producto.precio}
-                      </p>
-                      {item.size && <p>Talla: {item.size}</p>}{' '}
-                      <p>Cantidad: {item.cantidad}</p>{' '}
-                    </div>
-
-                    <div className="flex items-center">
-                      <button
-                        onClick={() => addToCart(item.producto, item.size)} // Incrementa la cantidad
-                        className="bg-green-500 text-white font-bold p-2 rounded-full mr-2"
-                      >
-                        <IoMdAdd />
-                      </button>
-
-                      {/* Botón para eliminar el producto, abre el modal de confirmación */}
-                      <button
-                        onClick={() =>
-                          confirmDelete(item.producto.id, item.size)
-                        } // Llama a la función para confirmar eliminación
-                        className="bg-red-500 text-white font-bold p-2 rounded-full mr-2"
-                      >
-                        <MdDeleteOutline />
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                    Finalizar Compra
+                  </button>
+                </div>
+              </>
             ) : (
-              <p className="text-white">El carrito está vacío :( </p>
+              <div className="flex flex-col justify-center items-center p-6">
+                <div className="flex flex-row items-center text-white text-2xl mb-4 im-fell-english ">
+                  El carrito está vacío <TbMoodSad className="ml-4" />
+                </div>
+                <ButtonPage onClick={() => router.push('/cart')} className="">
+                  Comprar articulos
+                </ButtonPage>
+              </div>
             )}
-
-            <button
-              onClick={handlePayment}
-              className="bg-yellow-500 text-black font-bold py-2 px-4 rounded mt-4"
-            >
-              Finalizar Compra
-            </button>
           </div>
         </div>
       )}

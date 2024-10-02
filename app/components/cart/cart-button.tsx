@@ -1,6 +1,13 @@
+import { CartItem } from '@/app/utils/types';
 import React from 'react';
 
-const CartButton = ({ cart, onClick }: { cart: any; onClick: () => void }) => {
+const CartButton = ({
+  cart,
+  onClick,
+}: {
+  cart: CartItem[];
+  onClick: () => void;
+}) => {
   return (
     <div className="p-4">
       <button

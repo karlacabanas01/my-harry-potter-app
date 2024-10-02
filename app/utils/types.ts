@@ -1,37 +1,30 @@
+export type Wand = {
+  wood: string;
+  core: string;
+  length: number;
+};
+
 export type Character = {
   id: string;
-  type: string;
-  attributes: {
-    slug: string;
-    alias_names: string[];
-    animagus: string | null;
-    blood_status: string | null;
-    boggart: string | null;
-    born: string | null;
-    died: string;
-    eye_color: string | null;
-    family_members: string[];
-    gender: string | null;
-    hair_color: string | null;
-    height: string | null;
-    house: string;
-    image: string;
-    jobs: string[];
-    marital_status: string | null;
-    name: string;
-    nationality: string | null;
-    patronus: string;
-    romances: string[];
-    skin_color: string | null;
-    species: string | null;
-    titles: string[];
-    wands: string[];
-    weight: string | null;
-    wiki: string;
-  };
-  links: {
-    self: string;
-  };
+  name: string;
+  alternate_names: string[];
+  species: string;
+  gender: string;
+  house: string;
+  dateOfBirth: string;
+  yearOfBirth: number;
+  wizard: boolean;
+  ancestry: string;
+  eyeColour: string;
+  hairColour: string;
+  wand: Wand;
+  patronus: string;
+  hogwartsStudent: boolean;
+  hogwartsStaff: boolean;
+  actor: string;
+  alternate_actors: string[];
+  alive: boolean;
+  image: string;
 };
 
 export interface Book {

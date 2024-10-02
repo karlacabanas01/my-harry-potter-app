@@ -49,16 +49,15 @@ const SpellsList = ({ id }: { id: string }) => {
   return (
     <Section
       id={id}
-      title="Hechizos"
-      description="Conoce los hechizos que dieron forma al mundo mágico."
+      title="Spells"
+      description="Get to know the spells that shaped the wizarding world."
     >
       <main className="grid grid-cols-1 gap-4 p-4 pangolin mx-auto max-w-4xl md:grid-cols-2 lg:grid-cols-4">
         {[0, 1, 2, 3].map((index) => (
           <CardSpells
             key={index}
             title={
-              randomSpells[index]?.attributes.name ??
-              'Hover para ver un hechizo'
+              randomSpells[index]?.attributes.name ?? 'Hover to see a spell'
             }
             copy={randomSpells[index]?.attributes.effect ?? ''}
             onMouseEnter={() => handleMouseEnter(index)}

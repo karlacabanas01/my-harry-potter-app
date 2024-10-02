@@ -2,7 +2,6 @@
 import { HouseFlag } from './components/house/house-flag';
 import './styles/globals.css';
 import { useRouter } from 'next/navigation';
-import { ProductList } from './components/cart/product-list';
 import { useCart } from './components/cart/use-cart';
 import CharactersPage from './components/characters';
 import { Footer } from './components/footer';
@@ -14,6 +13,8 @@ import SpellsList from './components/spells/spells-list';
 import { usePage } from './usePage';
 import ButtonPage from './components/button/button-page';
 import { HomeSection } from './components/navbar/home-section';
+import Loading from './loading';
+import { Book } from './components/book/book';
 
 export default function Page() {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function Page() {
   } = usePage();
   const { cart, addToCart, removeFromCart } = useCart();
 
-  // if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="text-white dark:bg-gray-100 dark:text-black flex flex-col justify-center min-h-screen">
@@ -38,19 +39,16 @@ export default function Page() {
         />
         <HomeSection />
 
-        <div className="w-full text-center">
-          {/* Sección de libros */}
+        <div className="flex flex-col w-full text-center">
           <ButtonPage
-            onClick={() => router.push('/search')}
-            className="mb-4 mt-8"
+            onClick={() => router.push('/cart')}
+            className="w-2/6 mx-auto"
           >
-            Buscar Libros y Películas
-          </ButtonPage>
-
-          {/* Lista de productos */}
-          <ButtonPage onClick={() => router.push('/cart')} className="">
             Comprar articulos
           </ButtonPage>
+
+          {/* Sección de libros */}
+          <Book />
 
           {/* Otras secciones */}
           <Section id="house" title="Casas de Hogwarts">

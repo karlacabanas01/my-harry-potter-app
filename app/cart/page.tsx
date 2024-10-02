@@ -47,7 +47,7 @@ export default function Page() {
               addToCart={addToCart}
               handleSizeChange={handleSizeChange}
               isDisabled={
-                product.nombre.includes('Sudadera') && !selectedSize[product.id]
+                product.nombre.includes('hoodie') && !selectedSize[product.id]
               }
             />
           ))}

@@ -12,7 +12,8 @@ type House = {
 
 export function HouseFlag(): JSX.Element {
   const [houses, setHouses] = useState<House[]>([]);
-  const [selectedHouse, setSelectedHouse] = useState<House | null>(null); // Estado para la casa seleccionada
+  const [selectedHouse, setSelectedHouse] = useState<House | null>(null); // Casa seleccionada
+  const [isExiting, setIsExiting] = useState(false); // Estado de salida para la animación
 
   useEffect(() => {
     const fetchHouses = async () => {
@@ -38,14 +39,40 @@ export function HouseFlag(): JSX.Element {
   };
 
   const handleCardClick = (house: House) => {
-    setSelectedHouse(house);
+    // Si hay una casa seleccionada, aplicamos animación de salida
+    if (selectedHouse) {
+      setIsExiting(true); // Iniciar la animación de salida
+      setTimeout(() => {
+        setSelectedHouse(house); // Cambiar a la nueva casa
+        setIsExiting(false); // Resetear la animación de salida
+      }, 500); // La animación de salida dura 500ms
+    } else {
+      // Si no hay casa seleccionada, simplemente seleccionamos la casa
+      setSelectedHouse(house);
+    }
   };
 
+  useEffect(() => {
+    if (selectedHouse) {
+      const timer = setTimeout(() => {
+        setSelectedHouse(null); // Deselecciona después de 5 segundos
+      }, 5000); // Deselecciona después de 5 segundos
+
+      return () => clearTimeout(timer); // Limpiar el temporizador si cambia la casa
+    }
+  }, [selectedHouse]);
+
   return (
-    <div className="text-white py-10 overflow-hidden">
+    <div className="text-white py-10 overflow-hidden w-2/3 mx-auto">
       <div className="relative flex justify-center items-center bg-gray-700 h-full z-20 rounded-b-xl">
         {selectedHouse ? (
-          <div className="relative bg-cover bg-center text-center text-white p-2 m-2 rounded-xl shadow-lg">
+          <div
+            className={`relative bg-cover bg-center text-center text-white p-2 m-2 rounded-xl shadow-lg transform transition-all duration-500 ease-out ${
+              isExiting
+                ? 'opacity-0 translate-y-8'
+                : 'opacity-100 translate-y-0'
+            }`}
+          >
             <h6 className="flex flex-col justify-center items-center daily-prophet-bg im-fell-english p-4 rounded-md">
               <p className="font-bold text-3xl">
                 {selectedHouse.house} {selectedHouse.emoji}
@@ -92,7 +119,7 @@ export function HouseFlag(): JSX.Element {
           </div>
         ) : (
           <h6 className="flex flex-col justify-center items-center  text-white bg-indigo-800 px-4 py-1 m-4 rounded-lg text-lg">
-            Please Selected Your House
+            Please Select Your House
           </h6>
         )}
       </div>
@@ -104,7 +131,7 @@ export function HouseFlag(): JSX.Element {
               <HouseBanner
                 key={house.house}
                 name={house.house}
-                logoSrc={`/img/${house.house.toLowerCase()}.png`} // Asumiendo que los logos están nombrados por casa
+                logoSrc={`/img/${house.house.toLowerCase()}.png`}
                 color={houseColors[house.house as keyof typeof houseColors]}
               />
             </div>

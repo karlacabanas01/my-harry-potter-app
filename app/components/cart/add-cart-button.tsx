@@ -1,9 +1,10 @@
+import { ProductoHarryPotter } from '@/app/utils/types';
 import { BiCartAdd } from 'react-icons/bi';
 
 interface AddToCartButtonProps {
-  product: any;
+  product: ProductoHarryPotter;
   selectedSize?: string;
-  addToCart: (product: any, size?: string) => void;
+  addToCart: (product: ProductoHarryPotter, size?: string) => void;
   isDisabled: boolean;
   className?: string;
 }
@@ -13,7 +14,6 @@ const AddToCartButton = ({
   selectedSize,
   addToCart,
   isDisabled,
-  className,
 }: AddToCartButtonProps) => {
   return (
     <button

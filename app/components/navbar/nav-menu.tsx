@@ -10,10 +10,10 @@ interface Props {
 }
 
 const menuItems = [
-  { href: '#movies', label: 'Películas' },
-  { href: '#books', label: 'Libros' },
-  { href: '#house', label: 'Casas' },
-  { href: '#spells', label: 'Hechizos y Personajes' },
+  { href: '#movies', label: 'Movies' },
+  { href: '#books', label: 'Books' },
+  { href: '#house', label: 'Houses' },
+  { href: '#spells', label: 'Spells and Characters' },
 ];
 
 export function NavbarMenu({
@@ -26,7 +26,7 @@ export function NavbarMenu({
   const toggleCartModal = () => setShowCartModal(!showCartModal);
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center text-2xl font-bold pangolin">
       <ul className="hidden lg:flex space-x-4 lg:mr-4">
         {menuItems.map((item) => (
           <li key={item.label}>
