@@ -30,9 +30,9 @@ export default function CharactersPage() {
   };
 
   return (
-    <div className="relative">
+    <div className="flex flex-col items-center justify-center px-4">
       <div
-        className="flex overflow-x-scroll space-x-6 sm:space-x-10 custom-scrollbar sm:px-4 sm:m-6 py-6"
+        className="flex overflow-x-auto space-x-4 sm:space-x-6 custom-scrollbar sm:px-2 sm:m-4 py-4 w-full max-w-[1200px] mx-auto"
         ref={carouselRef}
       >
         {characters.map(
@@ -40,21 +40,21 @@ export default function CharactersPage() {
             character.image && (
               <button
                 key={character.name}
-                className="relative cursor-pointer shadow-xl mt-4 p-2 bg-gray-900 rounded-[30px] sm:rounded-[40px] flex flex-col items-center justify-center flex-shrink-0 border border-gray-200 w-[250px] sm:w-[200px] lg:w-[280px] transition-transform duration-300 hover:scale-110"
+                className="relative cursor-pointer shadow-xl mt-4 p-2 bg-gray-900 rounded-[20px] sm:rounded-[30px] flex flex-col items-center justify-center flex-shrink-0 border border-gray-200 w-[180px] sm:w-[150px] lg:w-[280px] transition-transform duration-300 hover:scale-110"
                 onClick={() => handleCardClick(character)}
               >
-                <div className="relative overflow-hidden w-[190px] h-[190px]">
+                <div className="relative overflow-hidden w-[140px] h-[140px] sm:w-[120px] sm:h-[120px] lg:w-[190px] lg:h-[190px]">
                   <Image
                     src={character.image}
                     alt={character.name}
                     objectFit="contain"
-                    width={190}
-                    height={190}
+                    width={140}
+                    height={140}
                     className="w-full h-full object-contain pl-2 pr-2"
                   />
                 </div>
 
-                <h2 className="text-lg sm:text-xl font-bold text-center text-white mt-4">
+                <h2 className="text-base sm:text-sm lg:text-lg font-bold text-center text-white mt-4">
                   {character.name}
                 </h2>
               </button>

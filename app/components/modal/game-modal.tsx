@@ -10,7 +10,6 @@ interface Props {
 
 const GameModal = ({ isOpen, onClose }: Props) => {
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
       <div className="relative bg-[url('/img/campo.jpeg')] bg-cover bg-center py-4 rounded-lg w-full max-w-3xl border border-gray-700 shadow-2xl">
@@ -23,7 +22,7 @@ const GameModal = ({ isOpen, onClose }: Props) => {
             }}
           >
             <span className="absolute inset-0 bg-black opacity-50 rounded-lg blur-lg -z-10"></span>
-            ¡Atrapa la Snitch Dorada!
+            Catch the Golden Snitch!
           </h1>
 
           <IconButton

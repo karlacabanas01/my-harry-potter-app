@@ -10,10 +10,9 @@ interface Props {
 }
 
 const menuItems = [
-  { href: '#movies', label: 'Movies' },
-  { href: '#books', label: 'Books' },
-  { href: '#house', label: 'Houses' },
-  { href: '#spells', label: 'Spells and Characters' },
+  { href: '#books', label: 'Books-Movies' },
+  { href: '#spells', label: 'Spells-Characters' },
+  { href: '#game', label: 'Game' },
 ];
 
 export function NavbarMenu({

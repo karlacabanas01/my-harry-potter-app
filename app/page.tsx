@@ -1,7 +1,6 @@
 'use client';
 import { HouseFlag } from './components/house/house-flag';
 import './styles/globals.css';
-import { useRouter } from 'next/navigation';
 import { useCart } from './components/cart/use-cart';
 import CharactersPage from './components/characters';
 import { Footer } from './components/footer';
@@ -15,9 +14,9 @@ import ButtonPage from './components/button/button-page';
 import { HomeSection } from './components/navbar/home-section';
 import Loading from './loading';
 import { Book } from './components/book/book';
+import CartPrincipalList from './components/cart/cart-principal-list';
 
 export default function Page() {
-  const router = useRouter();
   const {
     showModalQuiz,
     showModalGame,
@@ -29,6 +28,10 @@ export default function Page() {
 
   if (isLoading) return <Loading />;
 
+  // useEffect(() => {
+  //   throw new Error('Simulated error: Component mounted with an issue!');
+  // }, []);
+
   return (
     <div className="text-white dark:bg-gray-100 dark:text-black flex flex-col justify-center min-h-screen">
       <main>
@@ -37,46 +40,36 @@ export default function Page() {
           removeFromCart={removeFromCart}
           addToCart={addToCart}
         />
+
         <HomeSection />
 
         <div className="flex flex-col w-full text-center">
-          <ButtonPage
-            onClick={() => router.push('/cart')}
-            className="w-2/6 mx-auto"
-          >
-            Comprar articulos
-          </ButtonPage>
+          <Book id="books" />
+          <CartPrincipalList />
 
-          {/* Sección de libros */}
-          <Book />
-
-          {/* Otras secciones */}
-          <Section id="house" title="Casas de Hogwarts">
+          <Section id="house" title="Hogwarts Houses">
             <ButtonPage
               onClick={toggleModalQuiz}
               className="border-2 border-gray-500 pangolin hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
             >
-              ¿Cuál es tu casa de Hogwarts?
+              What's your Hogwarts house?
             </ButtonPage>
             <HouseFlag />
           </Section>
 
-          {/* Sección de hechizos */}
           <SpellsList id="spells" />
 
-          {/* Sección de personajes */}
           <Section
             id="characters"
-            title="Personajes"
-            description="Conoce a los personajes que hicieron que la magia sucediera."
+            title="Characters"
+            description="Meet the characters who made magic happen."
           >
             <CharactersPage />
           </Section>
 
-          {/* Sección de juego */}
-          <Section id="game" title="Juego">
+          <Section id="game" title="Game">
             <ButtonPage onClick={toggleModalGame}>
-              Atrapa la snich dorada
+              Catch the golden snitch
             </ButtonPage>
           </Section>
 

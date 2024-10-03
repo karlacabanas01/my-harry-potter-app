@@ -7,7 +7,7 @@ export function ButtonMore({ label, onClick }: ButtonMoreProps): JSX.Element {
   return (
     <button
       type="submit"
-      className="flex justify-center gap-2 items-center mx-auto shadow-xl text-md text-gray-800 bg-[#fffcfc] lg:font-semibold border-gray-50 relative z-10 px-2 py-1 border-2 rounded-xl overflow-hidden group transition-all duration-300 ease-in-out hover:scale-105 hover:bg-[#946b2d] hover:text-white"
+      className="flex justify-center gap-2 items-center mx-auto shadow-xl text-md text-gray-800 bg-[#fffcfc] lg:font-semibold border-black border-2 relative z-10 px-2 py-1 border-2 rounded-xl overflow-hidden group transition-all duration-300 ease-in-out hover:scale-105 hover:bg-yellow-400 hover:text-black hover:border-black hover:border-2 hover:shadow-2xl"
       onClick={onClick}
     >
       {label}

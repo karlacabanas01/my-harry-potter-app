@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 
 interface ThankYouModalProps {
@@ -14,19 +15,20 @@ export function ThankYouModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full relative">
+      <div className="flex flex-col justify-center items-center bg-yellow-400 border-2 border-black rounded-lg shadow-lg p-6 max-w-lg w-full relative">
         <button
-          className="absolute top-4 right-4 text-2xl text-gray-600 hover:text-red-500"
+          className="absolute top-4 right-4 text-2xl text-black hover:text-red-500"
           onClick={onClose}
         >
           <IoCloseCircleOutline size={30} />
         </button>
 
         <h2 className="text-2xl font-bold mb-4 text-black">
-          Gracias por su compra
+          Thank you for your buy
         </h2>
-        <p className="text-center text-lg">
-          Tu pago ha sido procesado con éxito.
+        <p className="text-center text-lg text-black flex items-center justify-center">
+          Your payment has been successfully processed{' '}
+          <FaCheckCircle className="ml-2" color="green" size={24} />
         </p>
       </div>
     </div>

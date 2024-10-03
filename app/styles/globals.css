@@ -135,6 +135,23 @@ body {
   background-color: #718096;
 }
 
+.custom-scrollbar-y {
+  overflow-y: auto;
+}
+
+.custom-scrollbar-y::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar-y::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 10px;
+}
+
+.custom-scrollbar-y::-webkit-scrollbar-thumb:hover {
+  background-color: #718096;
+}
+
 .bg-stars {
   background: #0c1020;
   background-image: radial-gradient(

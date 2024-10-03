@@ -6,9 +6,8 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { PayModal } from './pay-modal';
 import { ThankYouModal } from './thankyou-modal';
 import { IoMdAdd } from 'react-icons/io';
-import ButtonPage from '../button/button-page';
 import { useRouter } from 'next/navigation';
-import { TbMoodSad } from 'react-icons/tb';
+import { TbMoodSad, TbShoppingCartOff } from 'react-icons/tb';
 
 interface CartModalProps {
   cart: CartItem[];
@@ -32,7 +31,9 @@ const CartModal = ({
   } | null>(null);
   const router = useRouter();
   const handleClosePaymentModal = () => {};
-
+  const clearCart = () => {
+    cart.length = 0;
+  };
   const handlePaymentSuccess = () => {
     setShowPaymentModal(false);
     setShowThankYouModal(true);
@@ -40,6 +41,10 @@ const CartModal = ({
 
   const handleCloseThankYouModal = () => {
     setShowThankYouModal(false);
+    setShowPaymentModal(false);
+    setShowConfirmModal(false);
+
+    clearCart();
   };
 
   const handlePayment = () => {
@@ -73,7 +78,7 @@ const CartModal = ({
     <>
       {!showThankYouModal && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="bg-slate-800 rounded-2xl shadow-lg px-6 py-4 max-w-2xl w-ful">
+          <div className="bg-slate-800 rounded-2xl shadow-lg px-6 py-4 max-w-2xl w-full ">
             <button
               className="ml-auto flex text-2xl text-gray-200 hover:text-red-500"
               onClick={onClose}
@@ -169,18 +174,27 @@ const CartModal = ({
                     onClick={handlePayment}
                     className="bg-yellow-600 w-full font-bold py-2 px-4 rounded-xl mt-4 hover:bg-yellow-500 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500"
                   >
-                    Finalizar Compra
+                    Complete order
                   </button>
                 </div>
               </>
             ) : (
-              <div className="flex flex-col justify-center items-center p-6">
-                <div className="flex flex-row items-center text-white text-2xl mb-4 im-fell-english ">
-                  El carrito está vacío <TbMoodSad className="ml-4" />
+              <div className="flex flex-col items-center justify-center space-y-4">
+                <div className="text-gray-400">
+                  <TbShoppingCartOff size={60} />
                 </div>
-                <ButtonPage onClick={() => router.push('/cart')} className="">
-                  Comprar articulos
-                </ButtonPage>
+
+                <p className="text-xl text-white text-center">
+                  Your cart is currently empty{' '}
+                  <TbMoodSad className="inline-block ml-2" />
+                </p>
+
+                <button
+                  onClick={() => router.push('/cart')}
+                  className="bg-yellow-500 text-lg text-black font-bold py-3 px-6 rounded-xl mt-4 hover:bg-yellow-400 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-500"
+                >
+                  Buy items
+                </button>
               </div>
             )}
           </div>
@@ -191,20 +205,20 @@ const CartModal = ({
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
             <h3 className="text-xl font-semibold mb-4">
-              ¿Estás seguro de que deseas eliminar este producto?
+              Are you sure you want to remove this product?
             </h3>
             <div className="flex justify-end space-x-4">
               <button
                 onClick={handleCloseModal}
                 className="bg-gray-500 text-white px-4 py-2 rounded"
               >
-                Cancelar
+                Cancel
               </button>
               <button
                 onClick={handleConfirmDelete}
                 className="bg-red-500 text-white px-4 py-2 rounded"
               >
-                Eliminar
+                Delete
               </button>
             </div>
           </div>

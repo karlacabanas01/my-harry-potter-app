@@ -1,6 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { IoAlertCircleOutline } from 'react-icons/io5';
 
 export default function ErrorPage({ error }: { error: Error }) {
   const router = useRouter();
@@ -10,17 +11,25 @@ export default function ErrorPage({ error }: { error: Error }) {
   }, [error]);
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-      <h1 className="text-4xl font-bold mb-4">¡Oops! Algo salió mal.</h1>
-      <p className="mb-8 text-lg">
-        Parece que la página que estás buscando no existe o ocurrió un error
-        inesperado.
+    <div className="w-full min-h-screen flex flex-col justify-center items-center bg-transparent text-white">
+      <div className="mb-8">
+        <IoAlertCircleOutline size={100} />
+      </div>
+
+      <h1 className="text-5xl font-extrabold mb-4 text-center">
+        Oops! Something went wrong.
+      </h1>
+
+      <p className="text-lg md:text-xl mb-8 text-center max-w-2xl">
+        It looks like the page you're looking for doesn't exist, or an
+        unexpected error occurred. Please try returning to the home page.
       </p>
+
       <button
         onClick={() => router.push('/')}
-        className="border-2 border-gray-500 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
+        className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-400"
       >
-        Regresar a la página principal
+        Go back to the homepage
       </button>
     </div>
   );

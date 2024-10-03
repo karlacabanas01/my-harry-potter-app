@@ -79,22 +79,22 @@ const SearchPage = () => {
     <div className="max-w-5xl mx-auto p-6">
       <div className="mb-4">
         <button
-          className="bg-gray-800 text-white px-4 py-2 rounded-md"
+          className="text-yellow-400 bg-black border-2 border-yellow-400 px-4 py-2 rounded-2xl hover:bg-yellow-400 hover:text-black transition duration-300 ease-in-out transform hover:scale-105"
           onClick={() => router.push('/')}
         >
-          Volver
+          Back to
         </button>
       </div>
       <h1 className="text-3xl text-white font-bold mb-6 text-center">
-        Buscar Libros y Películas
+        Search for Books and Movies
       </h1>
       <div className="mb-4">
         <input
           type="text"
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Buscar libros o películas"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md mb-4"
+          placeholder="For example: Harry Potter"
+          className="w-full px-4 py-2 border border-gray-600 rounded-md mb-4"
         />
       </div>
 
@@ -103,37 +103,50 @@ const SearchPage = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 px-4 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="bg-gray-800 text-white p-4 rounded-lg shadow-lg"
+              className="bg-gray-800 text-white p-4 rounded-lg shadow-lg flex flex-col justify-between"
             >
               {((item as Movie).attributes.poster ||
                 (item as Book).attributes.cover) && (
                 <div className="flex justify-center items-center flex-col pb-4">
-                  <Image
-                    src={
-                      (item as Movie).attributes.poster ??
-                      (item as Book).attributes.cover
+                  <div
+                    className={
+                      item.type === 'movie'
+                        ? 'w-[220px] h-[330px] relative'
+                        : 'w-[200px] h-[300px] relative p-6'
                     }
-                    alt={item.attributes.title}
-                    width={200}
-                    height={300}
-                    className="object-contain rounded-lg"
-                  />
+                  >
+                    <Image
+                      src={
+                        (item as Movie).attributes.poster ??
+                        (item as Book).attributes.cover
+                      }
+                      alt={item.attributes.title}
+                      fill
+                      className={
+                        item.type === 'book'
+                          ? 'object-contain rounded-lg p-4'
+                          : 'object-contain rounded-lg'
+                      }
+                    />
+                  </div>
                 </div>
               )}
 
-              <h3 className="text-xl font-semibold mb-2">
+              <h3 className="text-xl font-semibold mb-2 text-center">
                 {item.attributes.title}
               </h3>
 
               {(item as Book).attributes && (
-                <ButtonMore
-                  label="Abrir"
-                  onClick={() => openModal(item as Book)}
-                />
+                <div className="flex justify-center">
+                  <ButtonMore
+                    label="Abrir"
+                    onClick={() => openModal(item as Book)}
+                  />
+                </div>
               )}
             </div>
           ))}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import HouseBanner from './house-banner';
 
 type House = {
@@ -12,8 +11,8 @@ type House = {
 
 export function HouseFlag(): JSX.Element {
   const [houses, setHouses] = useState<House[]>([]);
-  const [selectedHouse, setSelectedHouse] = useState<House | null>(null); // Casa seleccionada
-  const [isExiting, setIsExiting] = useState(false); // Estado de salida para la animación
+  const [selectedHouse, setSelectedHouse] = useState<House | null>(null);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
     const fetchHouses = async () => {
@@ -39,15 +38,13 @@ export function HouseFlag(): JSX.Element {
   };
 
   const handleCardClick = (house: House) => {
-    // Si hay una casa seleccionada, aplicamos animación de salida
     if (selectedHouse) {
-      setIsExiting(true); // Iniciar la animación de salida
+      setIsExiting(true);
       setTimeout(() => {
-        setSelectedHouse(house); // Cambiar a la nueva casa
-        setIsExiting(false); // Resetear la animación de salida
-      }, 500); // La animación de salida dura 500ms
+        setSelectedHouse(house);
+        setIsExiting(false);
+      }, 500);
     } else {
-      // Si no hay casa seleccionada, simplemente seleccionamos la casa
       setSelectedHouse(house);
     }
   };
@@ -55,10 +52,10 @@ export function HouseFlag(): JSX.Element {
   useEffect(() => {
     if (selectedHouse) {
       const timer = setTimeout(() => {
-        setSelectedHouse(null); // Deselecciona después de 5 segundos
-      }, 5000); // Deselecciona después de 5 segundos
+        setSelectedHouse(null);
+      }, 5000);
 
-      return () => clearTimeout(timer); // Limpiar el temporizador si cambia la casa
+      return () => clearTimeout(timer);
     }
   }, [selectedHouse]);
 
@@ -78,13 +75,13 @@ export function HouseFlag(): JSX.Element {
                 {selectedHouse.house} {selectedHouse.emoji}
               </p>
               <p className="text-lg">
-                <strong>Fundador:</strong> {selectedHouse.founder}
+                <strong>Founder:</strong> {selectedHouse.founder}
               </p>
               <p className="text-lg">
                 <strong>Animal:</strong> {selectedHouse.animal}
               </p>
               <p className="text-lg">
-                <strong>Colores:</strong> {selectedHouse.colors.join(', ')}
+                <strong>Colors:</strong> {selectedHouse.colors.join(', ')}
               </p>
             </h6>
 
