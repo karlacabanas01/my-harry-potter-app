@@ -1,7 +1,6 @@
 'use client';
 import { HouseFlag } from './components/house/house-flag';
 import './styles/globals.css';
-import { useCart } from './components/cart/use-cart';
 import CharactersPage from './components/characters';
 import { Footer } from './components/footer';
 import GameModal from './components/modal/game-modal';
@@ -24,7 +23,6 @@ export default function Page() {
     toggleModalGame,
     isLoading,
   } = usePage();
-  const { cart, addToCart, removeFromCart } = useCart();
 
   if (isLoading) return <Loading />;
 
@@ -35,11 +33,7 @@ export default function Page() {
   return (
     <div className="text-white dark:bg-gray-100 dark:text-black flex flex-col justify-center min-h-screen">
       <main>
-        <Navbar
-          cart={cart}
-          removeFromCart={removeFromCart}
-          addToCart={addToCart}
-        />
+        <Navbar />
 
         <HomeSection />
 

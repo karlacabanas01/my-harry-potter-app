@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavbarLogo } from './nav-logo';
 import { NavbarMenu } from './nav-menu';
-import { CartItem, ProductoHarryPotter } from '@/app/utils/types';
 
-interface NavbarProps {
-  cart: CartItem[];
-  removeFromCart: (itemId: number) => void;
-  addToCart: (product: ProductoHarryPotter, size?: string) => void;
-}
-
-export function Navbar({
-  cart,
-  removeFromCart,
-  addToCart,
-}: NavbarProps): JSX.Element {
+export function Navbar(): JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -36,12 +25,7 @@ export function Navbar({
       >
         <div className="container mx-auto px-2 flex justify-between items-center">
           <NavbarLogo />
-
-          <NavbarMenu
-            cart={cart}
-            addToCart={addToCart}
-            removeFromCart={removeFromCart}
-          />
+          <NavbarMenu />
         </div>
       </nav>
     </>

@@ -38,6 +38,7 @@ const Game = () => {
     }
   }, [attempts, hasWon]);
 
+  //Pre-procesadores para el CSS
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <p className="absolute pangolin bottom-2 right-2 text-md bg-black bg-opacity-70 p-2 border border-gray-300 rounded-xl text-gray-200">

@@ -19,10 +19,10 @@ const AddToCartButton = ({
     <button
       onClick={() => addToCart(product, selectedSize)}
       disabled={isDisabled}
-      className={` ml-auto border-2 rounded-full p-2 items-center ${
+      className={`ml-auto border-2 rounded-full p-2 items-center ${
         isDisabled
           ? 'border-gray-400 bg-gray-300 cursor-not-allowed'
-          : 'border-white hover:bg-green-600'
+          : 'border-white  hover:bg-yellow-500 '
       } transition duration-300`}
     >
       <BiCartAdd color="white" size={24} />

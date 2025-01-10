@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import CartButton from '../cart/cart-button';
 import CartModal from '../cart/cart-modal';
-import { CartItem, ProductoHarryPotter } from '@/app/utils/types';
-
-interface Props {
-  cart: CartItem[];
-  removeFromCart: (itemId: number) => void;
-  addToCart: (product: ProductoHarryPotter, size?: string) => void;
-}
+import { useCart } from '@/app/context/useCart';
 
 const menuItems = [
   { href: '#books', label: 'Books-Movies' },
@@ -15,18 +9,16 @@ const menuItems = [
   { href: '#game', label: 'Game' },
 ];
 
-export function NavbarMenu({
-  cart,
-  removeFromCart,
-  addToCart,
-}: Props): JSX.Element {
+export function NavbarMenu(): JSX.Element {
   const [showCartModal, setShowCartModal] = useState(false);
+  const { cart } = useCart(); // Ver si cart está sincronizado aquí también
+  console.log('Contenido del carrito en NavbarMenu:', cart);
 
   const toggleCartModal = () => setShowCartModal(!showCartModal);
 
   return (
-    <div className="flex items-center text-2xl font-bold pangolin">
-      <ul className="hidden lg:flex space-x-4 lg:mr-4">
+    <div className="flex items-center">
+      <ul className="hidden text-xl font-bold lg:flex space-x-4 lg:mr-4 pangolin">
         {menuItems.map((item) => (
           <li key={item.label}>
             <a href={item.href} className="hover:text-[#f0c75e]">
@@ -35,15 +27,9 @@ export function NavbarMenu({
           </li>
         ))}
       </ul>
-      <CartButton cart={cart} onClick={toggleCartModal} />
-      {showCartModal && (
-        <CartModal
-          cart={cart}
-          addToCart={addToCart}
-          removeFromCart={removeFromCart}
-          onClose={toggleCartModal}
-        />
-      )}
+
+      <CartButton onClick={toggleCartModal} />
+      {showCartModal && <CartModal onClose={toggleCartModal} />}
     </div>
   );
 }

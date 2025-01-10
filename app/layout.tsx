@@ -1,3 +1,4 @@
+import { CartProvider } from './context/useCart';
 import './styles/globals.css';
 
 export const metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
         <link rel="icon" href="/img/logo.png" />
       </head>
       <body className="min-h-screen flex flex-col justify-between overflow-x-hidden bg-stars">
-        <main className="flex-grow max-w-full overflow-hidden mx-auto">
-          {children}
-        </main>
+        <CartProvider>
+          <main className="flex-grow max-w-full overflow-hidden mx-auto">
+            {children}
+          </main>
+        </CartProvider>
       </body>
     </html>
   );

@@ -4,15 +4,15 @@ import { productosHarryPotter } from '@/app/utils/data';
 import { Product } from '../components/cart/product';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '../components/navbar/navbar';
-import { useCart } from '../components/cart/use-cart';
 import Loading from '../loading';
 import { usePage } from '../usePage';
+import { useCart } from '../context/useCart';
 
 export default function Page() {
   const [selectedSize, setSelectedSize] = useState<{ [key: number]: string }>(
     {},
   );
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { addToCart } = useCart();
   const { isLoading } = usePage();
   const router = useRouter();
 
@@ -24,16 +24,13 @@ export default function Page() {
   };
   if (isLoading) return <Loading />;
 
+  //Ver como poner Context API
   return (
     <div className="flex flex-col items-center">
-      <Navbar
-        cart={cart}
-        removeFromCart={removeFromCart}
-        addToCart={addToCart}
-      />
+      <Navbar />
 
       <div className="container mx-auto px-4 py-8 mt-20">
-        <div className="mb-8 flex justify-start">
+        <div className="w-full mb-8 flex justify-start">
           <button
             className="text-yellow-400 bg-black border-2 border-yellow-400 px-4 py-2 rounded-2xl hover:bg-yellow-400 hover:text-black transition duration-300 ease-in-out transform hover:scale-105"
             onClick={() => router.push('/')}
@@ -42,7 +39,7 @@ export default function Page() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center w-full ">
           {productosHarryPotter.map((product) => (
             <Product
               key={product.id}

@@ -1,14 +1,10 @@
-import { CartItem } from '@/app/utils/types';
+import { useCart } from '@/app/context/useCart';
 import React from 'react';
 import { TiShoppingCart } from 'react-icons/ti';
 
-const CartButton = ({
-  cart,
-  onClick,
-}: {
-  cart: CartItem[];
-  onClick: () => void;
-}) => {
+const CartButton = ({ onClick }: { onClick: () => void }) => {
+  const { cart } = useCart(); // Obtiene el carrito desde el contexto
+
   return (
     <div className="flex flex-row items-center justify-center">
       <button
