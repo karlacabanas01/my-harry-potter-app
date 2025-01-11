@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Confetti from 'react-confetti';
 
 import { questions } from '../../utils/data';
@@ -14,15 +14,29 @@ export default function Quiz() {
     Slytherin: 0,
   });
   const [showResult, setShowResult] = useState(false);
-  const [, setShowConfetti] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [modalSize, setModalSize] = useState({ width: 0, height: 0 });
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setShowConfetti(true);
-    const timer = setTimeout(() => {
-      setShowConfetti(false);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (modalRef.current) {
+      // Establece el tamaño del modal una vez que esté disponible
+      setModalSize({
+        width: modalRef.current.clientWidth,
+        height: modalRef.current.clientHeight,
+      });
+    }
+  }, [showResult]); // Se ejecuta cuando se muestra el resultado
+
+  useEffect(() => {
+    if (showResult) {
+      setShowConfetti(true);
+      const timer = setTimeout(() => {
+        setShowConfetti(false);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showResult]);
 
   const handleAnswer = (house: House) => {
     setScores((prevScores) => ({
@@ -56,7 +70,7 @@ export default function Quiz() {
                 <button
                   key={house}
                   onClick={() => handleAnswer(house as House)}
-                  className="button-quiz im-fell-english "
+                  className="button-quiz im-fell-english"
                 >
                   {answer}
                 </button>
@@ -65,13 +79,25 @@ export default function Quiz() {
           </div>
         </div>
       ) : (
-        <div>
-          <h2 className="text-2xl font-bold mb-4">¡Tu casa de Hogwarts es:</h2>
+        <div
+          ref={modalRef}
+          className="relative bg-orange-200 p-6 rounded-md shadow-lg"
+        >
+          <h2 className="text-2xl font-bold mb-4 text-center">
+            ¡Tu casa de Hogwarts es:
+          </h2>
           <p className="text-4xl text-center font-bold tracking-widest text-green-700">
             {getHouseResult()}
           </p>
 
-          <Confetti />
+          {showConfetti && modalSize.width > 0 && modalSize.height > 0 && (
+            <Confetti
+              width={modalSize.width}
+              height={modalSize.height}
+              numberOfPieces={150}
+              recycle={false}
+            />
+          )}
         </div>
       )}
     </div>

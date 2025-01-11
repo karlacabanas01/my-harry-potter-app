@@ -9,7 +9,7 @@ import Section from './components/organisms/section';
 import { usePage } from './usePage';
 import ButtonPage from './components/atoms/buttons/page-button';
 import Loading from './loading';
-import { Book } from './components/organisms/book/book';
+import { BookAndMovies } from './components/organisms/book/book-and-movies';
 import SpellsList from './components/organisms/lists/spells-list';
 import { HomeSection } from './components/molecules/navbar/home-section';
 import CartPrincipalList from './components/organisms/cart/cart-principal-list';
@@ -39,7 +39,7 @@ export default function Page() {
         <HomeSection />
 
         <div className="flex flex-col w-full text-center">
-          <Book id="books" />
+          <BookAndMovies id="books" />
           <CartPrincipalList />
 
           <Section id="house" title="Hogwarts Houses">

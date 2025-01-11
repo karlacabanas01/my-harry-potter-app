@@ -1,12 +1,12 @@
 'use client';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import BookModal from '../components/molecules/modals/book-modal';
 import LoadingSpinner from '../loading';
 import ButtonMore from '../components/atoms/buttons/more-button';
 import { Book, Movie } from '../utils';
+import BackButton from '../components/atoms/buttons/back-button';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
@@ -18,7 +18,6 @@ const SearchPage = () => {
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
@@ -79,23 +78,19 @@ const SearchPage = () => {
   return (
     <div className="max-w-5xl mx-auto p-6">
       <div className="mb-4">
-        <button
-          className="text-yellow-400 bg-black border-2 border-yellow-400 px-4 py-2 rounded-2xl hover:bg-yellow-400 hover:text-black transition duration-300 ease-in-out transform hover:scale-105"
-          onClick={() => router.push('/')}
-        >
-          Back to
-        </button>
+        <BackButton label="Go to Home" route="/" />
       </div>
-      <h1 className="text-3xl text-white font-bold mb-6 text-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-100 py-4 rounded-md shadow-sm">
         Search for Books and Movies
       </h1>
+
       <div className="mb-4">
         <input
           type="text"
           value={query}
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="For example: Harry Potter"
-          className="w-full px-4 py-2 border border-gray-600 rounded-md mb-4"
+          className="w-full px-4 py-2 mb-4  bg-white rounded-md text-gray-800 shadow-sm focus:ring-4 focus:ring-yellow-400 focus:border-yellow-400 focus:outline-none"
         />
       </div>
 
