@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import BookModal from '../components/book/book-modal';
-import { ButtonMore } from '../components/button/button-more';
+import BookModal from '../components/molecules/modals/book-modal';
 import LoadingSpinner from '../loading';
-import { Book, Movie } from '../utils/types';
+import ButtonMore from '../components/atoms/buttons/more-button';
+import { Book, Movie } from '../utils';
 
 const SearchPage = () => {
   const [query, setQuery] = useState('');
   const [, setBooks] = useState<Book[]>([]);
+
   const [, setMovies] = useState<Movie[]>([]);
   const [allItems, setAllItems] = useState<(Book | Movie)[]>([]);
   const [filteredItems, setFilteredItems] = useState<(Book | Movie)[]>([]);

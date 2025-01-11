@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Product } from './product';
 import { productosHarryPotter } from '@/app/utils/data';
 import { ProductoHarryPotter } from '@/app/utils/types';
+import { Product } from './product';
 
 interface Props {
   addToCart: (product: ProductoHarryPotter, size?: string) => void;

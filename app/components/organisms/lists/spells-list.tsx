@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import CardSpells from './spells-card';
+import CardSpells from '../card/spells-card';
 import Section from '../section';
 
 type Spell = {

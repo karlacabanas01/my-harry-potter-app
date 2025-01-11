@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import IconButton from '../button/button-icon';
-import Quiz from '../quiz';
+import IconButton from '../../atoms/buttons/icon-button';
+import Quiz from '../../organisms/quiz';
 
 interface Props {
   onClose: () => void;

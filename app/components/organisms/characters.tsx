@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import CharacterModal from './modal/character-modal';
+import CharacterModal from '../molecules/modals/character-modal';
 import Image from 'next/image';
-import { Character } from '../utils/types';
+import { Character } from '../../utils/types';
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState<Character[]>([]);

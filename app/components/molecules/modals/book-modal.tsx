@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { AiOutlineClose } from 'react-icons/ai';
-import IconButton from '../button/button-icon';
+import IconButton from '../../atoms/buttons/icon-button';
 import { Book, Movie } from '@/app/utils/types';
 import { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa6';

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import ButtonPage from '../button/button-page';
+import { ButtonPage } from '../../atoms/buttons';
 
 export function Book({ id }: { id: string }): JSX.Element {
   const router = useRouter();

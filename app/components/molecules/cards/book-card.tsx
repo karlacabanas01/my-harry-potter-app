@@ -1,8 +1,6 @@
 import Image from 'next/image';
-
-import { ButtonMore } from '../button/button-more';
-
 import { Book } from '@/app/utils/types';
+import ButtonMore from '../../atoms/buttons/more-button';
 
 interface BookCardProps {
   book: Book;

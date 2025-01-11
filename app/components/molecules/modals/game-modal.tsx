@@ -1,7 +1,7 @@
 import { AiOutlineClose } from 'react-icons/ai';
 
-import IconButton from '../button/button-icon';
-import Game from '../game';
+import IconButton from '../../atoms/buttons/icon-button';
+import Game from '../../organisms/game';
 
 interface Props {
   isOpen: boolean;

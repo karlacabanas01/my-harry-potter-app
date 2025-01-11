@@ -1,12 +1,12 @@
 'use client';
 import { useState } from 'react';
 import { productosHarryPotter } from '@/app/utils/data';
-import { Product } from '../components/cart/product';
 import { useRouter } from 'next/navigation';
-import { Navbar } from '../components/navbar/navbar';
 import Loading from '../loading';
 import { usePage } from '../usePage';
 import { useCart } from '../context/useCart';
+import { Navbar } from '../components/organisms/navbar';
+import { Product } from '../components/organisms/product/product';
 
 export default function Page() {
   const [selectedSize, setSelectedSize] = useState<{ [key: number]: string }>(

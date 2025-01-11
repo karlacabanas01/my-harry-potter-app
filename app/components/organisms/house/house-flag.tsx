@@ -9,7 +9,7 @@ type House = {
   animal: string;
 };
 
-export function HouseFlag(): JSX.Element {
+export default function HouseFlag(): JSX.Element {
   const [houses, setHouses] = useState<House[]>([]);
   const [selectedHouse, setSelectedHouse] = useState<House | null>(null);
   const [isExiting, setIsExiting] = useState(false);

@@ -2,10 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { PayModal } from './pay-modal';
 import { ThankYouModal } from './thankyou-modal';
-import CartItemComponent from './cart-item-component';
-import EmptyCartMessage from './empty-cart-message';
+import EmptyCartMessage from '../../atoms/messages/empty-cart-message';
 import ConfirmDeleteModal from './confirm-delete-modal';
 import { useCart } from '@/app/context/useCart';
+import CartItemComponent from '../../organisms/cart/cart-item-component';
 
 interface CartModalProps {
   onClose: () => void;

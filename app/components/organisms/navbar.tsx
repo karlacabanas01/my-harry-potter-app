@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { NavbarLogo } from './nav-logo';
-import { NavbarMenu } from './nav-menu';
+import { NavbarLogo } from '../molecules/navbar/nav-logo';
+import { NavbarMenu } from '../molecules/navbar/nav-menu';
 
 export function Navbar(): JSX.Element {
   const [isScrolled, setIsScrolled] = useState(false);

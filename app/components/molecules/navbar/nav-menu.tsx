@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import CartButton from '../cart/cart-button';
-import CartModal from '../cart/cart-modal';
 import { useCart } from '@/app/context/useCart';
+import { CartButton } from '../../atoms/buttons';
+import CartModal from '../modals/cart-modal';
 
 const menuItems = [
   { href: '#books', label: 'Books-Movies' },

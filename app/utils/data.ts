@@ -176,3 +176,5 @@ export const productosHarryPotter: ProductoHarryPotter[] = [
     envio: 'International shipping available',
   },
 ];
+
+export default { productosHarryPotter, questions };

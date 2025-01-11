@@ -3,7 +3,10 @@ interface ButtonMoreProps {
   onClick: () => void;
 }
 
-export function ButtonMore({ label, onClick }: ButtonMoreProps): JSX.Element {
+export default function ButtonMore({
+  label,
+  onClick,
+}: ButtonMoreProps): JSX.Element {
   return (
     <button
       type="submit"

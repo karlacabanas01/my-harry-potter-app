@@ -3,7 +3,7 @@ import { IoCloseCircleOutline } from 'react-icons/io5';
 import { MdPayment } from 'react-icons/md';
 import { FaCcPaypal } from 'react-icons/fa';
 import { SiMercadopago } from 'react-icons/si';
-import PaymentButton from './payment-btn';
+import { PaymentButton } from '../../atoms';
 
 interface Props {
   show: boolean;

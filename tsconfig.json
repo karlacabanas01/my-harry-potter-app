@@ -17,8 +17,15 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/components/atoms/*": ["./components/atoms/*"],
+      "@/components/atoms/buttons/*": ["./components/atoms/*"],
+      "@/components/molecules/*": ["./components/molecules/*"],
+      "@/utils/*": ["./utils/*"],
+      "@/styles/*": ["./styles/*"]
     }
   },
   "include": [

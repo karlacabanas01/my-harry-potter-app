@@ -1,19 +1,20 @@
 'use client';
-import { HouseFlag } from './components/house/house-flag';
+
 import './styles/globals.css';
-import CharactersPage from './components/characters';
-import { Footer } from './components/footer';
-import GameModal from './components/modal/game-modal';
-import { QuizModal } from './components/modal/quiz-modal';
-import { Navbar } from './components/navbar/navbar';
-import Section from './components/section';
-import SpellsList from './components/spells/spells-list';
+import CharactersPage from './components/organisms/characters';
+import { Footer } from './components/organisms/footer';
+import GameModal from './components/molecules/modals/game-modal';
+import { QuizModal } from './components/molecules/modals/quiz-modal';
+import Section from './components/organisms/section';
 import { usePage } from './usePage';
-import ButtonPage from './components/button/button-page';
-import { HomeSection } from './components/navbar/home-section';
+import ButtonPage from './components/atoms/buttons/page-button';
 import Loading from './loading';
-import { Book } from './components/book/book';
-import CartPrincipalList from './components/cart/cart-principal-list';
+import { Book } from './components/organisms/book/book';
+import SpellsList from './components/organisms/lists/spells-list';
+import { HomeSection } from './components/molecules/navbar/home-section';
+import CartPrincipalList from './components/organisms/cart/cart-principal-list';
+import { Navbar } from './components/organisms/navbar';
+import { HouseFlag } from './components/organisms/house';
 
 export default function Page() {
   const {

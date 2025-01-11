@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { ProductoHarryPotter } from '@/app/utils/types';
-import AddToCartButton from './add-cart-button';
+import { AddToCartButton } from '../../atoms/buttons';
 
 interface ProductProps {
   product: ProductoHarryPotter;

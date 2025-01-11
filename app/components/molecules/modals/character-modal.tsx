@@ -1,17 +1,16 @@
 'use client';
+import {
+  capitalizeFirstLetter,
+  Character,
+  formatDateOfBirth,
+} from '@/app/utils';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsCalendarDate } from 'react-icons/bs';
 import { FaHouseChimney } from 'react-icons/fa6';
 import { LuWand } from 'react-icons/lu';
-
-import { capitalizeFirstLetter, formatDateOfBirth } from '../../utils/format';
-import { Character } from '../../utils/types';
-import IconButton from '../button/button-icon';
-
-import '../card/card.css';
-import Image from 'next/image';
-
+import { IconButton } from '../../atoms/buttons';
 interface Props {
   character: Character;
   onClose: () => void;

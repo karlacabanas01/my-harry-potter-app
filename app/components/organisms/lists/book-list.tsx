@@ -1,9 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-import BookCard from './book-card';
+import BookCard from '../../molecules/cards/book-card';
 import Section from '../section';
-import BookModal from './book-modal';
+import BookModal from '../../molecules/modals/book-modal';
 
 import { Book } from '@/app/utils/types';
 
