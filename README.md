@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧙‍♂️ My Harry Potter App
 
-## Getting Started
+¡Bienvenido a **My Harry Potter App**!  
+Este es un proyecto web creado con **Next.js**, inspirado en el universo mágico de **Harry Potter**, donde puedes explorar personajes, hechizos, casas, libros y películas. Incluye diseño responsivo, modo oscuro, multilenguaje y elementos interactivos como confetti y modales.
 
-First, run the development server:
+## 🌐 Demo en línea
+
+🔗 [Ver sitio desplegado en Vercel](https://my-harry-potter-app.vercel.app/)  
+📂 [Ver repositorio en GitHub](https://github.com/karlacabanas01/my-harry-potter-app)
+
+## 🛠️ Tecnologías utilizadas
+
+- ⚛️ [Next.js 14](https://nextjs.org/)
+- 🧠 [React 18](https://reactjs.org/)
+- 🌀 [Tailwind CSS 3](https://tailwindcss.com/)
+- 🌍 [i18next + react-i18next](https://react.i18next.com/)
+- ⏰ [date-fns](https://date-fns.org/)
+- 🎉 [react-confetti](https://www.npmjs.com/package/react-confetti)
+- 🎨 [react-icons](https://react-icons.github.io/react-icons/)
+- ⌨️ TypeScript
+
+## 📦 Instalación local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clona el repositorio
+git clone https://github.com/karlacabanas01/my-harry-potter-app.git
+
+# Entra en el proyecto
+cd my-harry-potter-app
+
+# Instala las dependencias
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Scripts disponibles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Ejecuta el servidor de desarrollo
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Construye la aplicación para producción
+npm run build
 
-## Learn More
+# Inicia el servidor en modo producción
+npm start
 
-To learn more about Next.js, take a look at the following resources:
+# Ejecuta el linter
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌍 Soporte multilenguaje
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Este proyecto incluye soporte multilenguaje usando `i18next`. Detecta automáticamente el idioma del navegador y permite agregar más traducciones fácilmente.
 
-## Deploy on Vercel
+## ✨ Funcionalidades
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 🎨 Interfaz amigable y mágica con Tailwind CSS
+- 🌓 Modo claro/oscuro
+- 🌐 Multilenguaje
+- 🧙 Modal con detalles de personajes, libros y hechizos
+- 🎊 Confetti para eventos mágicos
+- 🔍 Navegación por secciones: personajes, casas, libros, películas, hechizos y un juego
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Estructura del proyecto
+
+```
+📁 components      -> Componentes reutilizables
+📁 pages           -> Rutas y vistas principales
+📁 public          -> Imágenes y recursos estáticos
+📁 styles          -> Estilos personalizados
+📁 i18n            -> Configuración de idiomas
+📁 utils           -> Funciones auxiliares
+```
+
+## 🧙‍♀️ Autora
+
+Desarrollado por [@karlacabanas01](https://github.com/karlacabanas01) con ✨ y mucho café ☕.
+
+## 📄 Licencia
+
+Este proyecto es de uso educativo y personal. Siéntete libre de modificarlo o inspirarte.
+
+---
