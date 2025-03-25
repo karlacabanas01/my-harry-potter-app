@@ -53,7 +53,7 @@ export default function HouseFlag(): JSX.Element {
     if (selectedHouse) {
       const timer = setTimeout(() => {
         setSelectedHouse(null);
-      }, 5000);
+      }, 2000);
 
       return () => clearTimeout(timer);
     }

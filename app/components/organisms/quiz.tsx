@@ -33,7 +33,8 @@ export default function Quiz() {
       setShowConfetti(true);
       const timer = setTimeout(() => {
         setShowConfetti(false);
-      }, 4000);
+      }, 3000);
+
       return () => clearTimeout(timer);
     }
   }, [showResult]);
