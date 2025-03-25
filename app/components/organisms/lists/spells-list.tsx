@@ -34,7 +34,7 @@ const SpellsList = ({ id }: { id: string }) => {
       }
     };
 
-    fetchSpells();
+    void fetchSpells();
   }, []);
 
   const handleMouseEnter = (index: number) => {

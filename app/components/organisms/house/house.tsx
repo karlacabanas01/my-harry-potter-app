@@ -21,7 +21,7 @@ export default function HousesPage() {
       setCharacters(data);
     }
 
-    fetchCharacters();
+    void fetchCharacters();
   }, [selectedHouse]);
 
   const handleHouseChange = (house: string) => {

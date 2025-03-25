@@ -18,7 +18,7 @@ export default function CharactersPage() {
       setCharacters(data);
     }
 
-    fetchCharacters();
+    void fetchCharacters();
   }, []);
 
   const handleCardClick = (character: Character) => {

@@ -21,7 +21,7 @@ const BooksList = ({ id }: { id: string }) => {
       setBooksData(data);
     }
 
-    fetchBooks();
+    void fetchBooks();
   }, []);
 
   const openModal = (book: Book) => {

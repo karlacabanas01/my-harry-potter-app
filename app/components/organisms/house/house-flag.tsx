@@ -27,7 +27,7 @@ export default function HouseFlag(): JSX.Element {
       }
     };
 
-    fetchHouses();
+    void fetchHouses();
   }, []);
 
   const houseColors = {

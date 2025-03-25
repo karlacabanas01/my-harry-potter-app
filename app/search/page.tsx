@@ -22,11 +22,11 @@ const SearchPage = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const booksResponse = await fetch(`https://api.potterdb.com/v1/books`);
+        const booksResponse = await fetch('https://api.potterdb.com/v1/books');
         const booksData = await booksResponse.json();
 
         const moviesResponse = await fetch(
-          `https://api.potterdb.com/v1/movies`,
+          'https://api.potterdb.com/v1/movies',
         );
         const moviesData = await moviesResponse.json();
 
@@ -49,7 +49,7 @@ const SearchPage = () => {
       }
     }
 
-    fetchData();
+    void fetchData();
   }, []);
 
   const handleSearch = (searchQuery: string) => {
