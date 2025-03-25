@@ -21,8 +21,8 @@ const CardSpells = ({ title, copy, onMouseEnter }: CardProps) => {
         style={{
           backgroundImage: 'url("img/spell-luna.jpg")',
         }}
-      ></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70"></div>
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
     </div>
   );
 };

@@ -91,28 +91,28 @@ export default function HouseFlag(): JSX.Element {
                 backgroundColor:
                   houseColors[selectedHouse.house as keyof typeof houseColors],
               }}
-            ></div>
+            />
             <div
               className="absolute top-0 right-0 w-12 h-12 rounded-bl-full opacity-95"
               style={{
                 backgroundColor:
                   houseColors[selectedHouse.house as keyof typeof houseColors],
               }}
-            ></div>
+            />
             <div
               className="absolute bottom-0 left-0 w-12 h-12 rounded-tr-full opacity-95"
               style={{
                 backgroundColor:
                   houseColors[selectedHouse.house as keyof typeof houseColors],
               }}
-            ></div>
+            />
             <div
               className="absolute bottom-0 right-0 w-12 h-12 rounded-tl-full opacity-95"
               style={{
                 backgroundColor:
                   houseColors[selectedHouse.house as keyof typeof houseColors],
               }}
-            ></div>
+            />
           </div>
         ) : (
           <h6 className="flex flex-col justify-center items-center  text-white bg-indigo-800 px-4 py-1 m-4 rounded-lg text-lg">

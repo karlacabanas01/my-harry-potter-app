@@ -21,7 +21,7 @@ const GameModal = ({ isOpen, onClose }: Props) => {
                 '2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 5px #d3a625, 0 0 10px #d3a625, 0 0 15px #d3a625',
             }}
           >
-            <span className="absolute inset-0 bg-black opacity-50 rounded-lg blur-lg -z-10"></span>
+            <span className="absolute inset-0 bg-black opacity-50 rounded-lg blur-lg -z-10" />
             Catch the Golden Snitch!
           </h1>
 

@@ -47,7 +47,7 @@ const HouseBanner = ({ name, logoSrc, color }: Props) => {
         <div
           className="absolute bottom-0 left-0 right-0 w-0 h-0 border-l-[64px] md:border-l-[80px] border-r-[64px] md:border-r-[80px] border-t-[32px] md:border-t-[40px] border-transparent mx-auto"
           style={{ borderTopColor: color }}
-        ></div>
+        />
       </div>
     </div>
   );
