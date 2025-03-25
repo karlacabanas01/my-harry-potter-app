@@ -47,7 +47,7 @@ export default function Page() {
               onClick={toggleModalQuiz}
               className="border-2 border-gray-500 pangolin hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
             >
-              What's your Hogwarts house?
+              {"What's your Hogwarts house?"}
             </ButtonPage>
             <HouseFlag />
           </Section>

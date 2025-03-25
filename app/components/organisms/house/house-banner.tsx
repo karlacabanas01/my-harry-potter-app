@@ -20,10 +20,10 @@ const HouseBanner = ({ name, logoSrc, color }: Props) => {
   };
 
   return (
-    <div
+    <button
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`text-center transition-transform duration-500 ease-in-out cursor-pointer  ${
+      className={`text-center transition-transform duration-500 ease-in-out cursor-pointer bg-transparent border-none p-0 ${
         isZoomed ? 'scale-125 z-30' : ''
       }`}
     >
@@ -49,7 +49,7 @@ const HouseBanner = ({ name, logoSrc, color }: Props) => {
           style={{ borderTopColor: color }}
         />
       </div>
-    </div>
+    </button>
   );
 };
 

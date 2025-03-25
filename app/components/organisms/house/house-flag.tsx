@@ -124,14 +124,17 @@ export default function HouseFlag(): JSX.Element {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-8 md:grid-cols-4 justify-center -mt-4 z-10 relative ">
         {houses.length > 0 ? (
           houses.map((house) => (
-            <div key={house.house} onClick={() => handleCardClick(house)}>
+            <button
+              key={house.house}
+              onClick={() => handleCardClick(house)}
+              className="focus:outline-none"
+            >
               <HouseBanner
-                key={house.house}
                 name={house.house}
                 logoSrc={`/img/${house.house.toLowerCase()}.png`}
                 color={houseColors[house.house as keyof typeof houseColors]}
               />
-            </div>
+            </button>
           ))
         ) : (
           <p>Loading...</p>

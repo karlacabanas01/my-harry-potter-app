@@ -21,8 +21,9 @@ export default function ErrorPage({ error }: { error: Error }) {
       </h1>
 
       <p className="text-lg md:text-xl mb-8 text-center max-w-2xl">
-        It looks like the page you're looking for doesn't exist, or an
-        unexpected error occurred. Please try returning to the home page.
+        {
+          " It looks like the page you're looking for doesn't exist, or an unexpected error occurred. Please try returning to the home page. "
+        }
       </p>
 
       <button

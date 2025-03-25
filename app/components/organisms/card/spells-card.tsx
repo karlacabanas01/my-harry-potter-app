@@ -8,7 +8,7 @@ type CardProps = {
 
 const CardSpells = ({ title, copy, onMouseEnter }: CardProps) => {
   return (
-    <div
+    <button
       className="relative flex items-end p-4 text-center  shadow-xl rounded-lg border border-gray-400 card group overflow-hidden"
       onMouseEnter={onMouseEnter}
     >
@@ -23,7 +23,7 @@ const CardSpells = ({ title, copy, onMouseEnter }: CardProps) => {
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70" />
-    </div>
+    </button>
   );
 };
 

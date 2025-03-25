@@ -51,7 +51,7 @@ const Game = () => {
             Congratulations!
           </h2>
           <p className="text-base mt-2 mb-2 text-[#d3a625]">
-            You've caught the Golden Snitch!
+            {"You've caught the Golden Snitch!"}
           </p>
           <Image
             src="/img/harry-gana.avif"
