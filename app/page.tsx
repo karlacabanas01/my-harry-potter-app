@@ -32,7 +32,20 @@ export default function Page() {
   // }, []);
 
   return (
-    <div className="text-white dark:bg-gray-100 dark:text-black flex flex-col justify-center min-h-screen">
+    <div
+      className="
+    flex flex-col justify-center min-h-screen 
+    transition-colors duration-500
+    
+    /* MODO CLARO */
+    bg-[#f8f5f2] text-[#2a2a2a]
+    
+    /* MODO OSCURO */
+    dark:bg-[#0f172a]  /* Fondo base: Azul Noche */
+    dark:bg-stars      /* Capa superior: Tus estrellas CSS */
+    dark:text-[#e2d1c3]
+  "
+    >
       <main>
         <Navbar />
 
@@ -43,10 +56,7 @@ export default function Page() {
           <CartPrincipalList />
 
           <Section id="house" title="Hogwarts Houses">
-            <ButtonPage
-              onClick={toggleModalQuiz}
-              className="border-2 border-gray-500 pangolin hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-full"
-            >
+            <ButtonPage onClick={toggleModalQuiz}>
               {"What's your Hogwarts house?"}
             </ButtonPage>
             <HouseFlag />
@@ -62,10 +72,23 @@ export default function Page() {
             <CharactersPage />
           </Section>
 
-          <Section id="game" title="Game">
-            <ButtonPage onClick={toggleModalGame}>
-              Catch the golden snitch
-            </ButtonPage>
+          <Section id="game" title="Golden Snitch Challenge">
+            <div className="hidden lg:block">
+              <ButtonPage onClick={toggleModalGame}>
+                Catch the golden snitch
+              </ButtonPage>
+            </div>
+
+            <div className="lg:hidden flex flex-col items-center justify-center p-6 mx-auto max-w-xs border border-[#ffd700]/10 rounded-xl bg-white/5 backdrop-blur-sm">
+              <span className="text-3xl mb-2">✨</span>
+              <h3 className="text-[#ffd700] font-bold text-sm uppercase tracking-wider">
+                Desktop Access Only
+              </h3>
+              <p className="text-gray-400 text-xs mt-2 italic">
+                The Golden Snitch is too fast for touch screens. Please use a
+                mouse to play!
+              </p>
+            </div>
           </Section>
 
           {/* Modales */}

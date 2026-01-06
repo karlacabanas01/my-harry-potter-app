@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
 
 @font-face {
   font-family: 'Grotesque';
@@ -153,29 +154,31 @@ body {
   background-color: #718096;
 }
 
-.bg-stars {
-  background: #0c1020;
-  background-image: radial-gradient(
-      circle,
-      rgba(249, 171, 14, 0.52) 2px,
-      transparent 2px
-    ),
-    radial-gradient(circle, rgba(231, 185, 20, 0.8) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 200, 0, 0.58) 0.5px, transparent 0.5px);
+@layer utilities {
+  .bg-stars {
+    background-color: transparent;
 
-  background-size:
-    400px 400px,
-    200px 200px,
-    100px 100px;
+    background-image: radial-gradient(
+        circle,
+        rgba(249, 171, 14, 0.52) 2px,
+        transparent 2px
+      ),
+      radial-gradient(circle, rgba(231, 185, 20, 0.8) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255, 200, 0, 0.58) 0.5px, transparent 0.5px);
 
-  background-position:
-    0 0,
-    150px 180px,
-    50px 80px;
+    background-size:
+      400px 400px,
+      200px 200px,
+      100px 100px;
 
-  background-repeat: repeat;
+    background-position:
+      0 0,
+      150px 180px,
+      50px 80px;
+
+    background-repeat: repeat;
+  }
 }
-
 .house-banner {
   transition:
     transform 0.3s ease,
@@ -286,5 +289,51 @@ body {
       rgba(255, 255, 255, 0);
     background-repeat: no-repeat;
     filter: blur(2px) contrast(50);
+  }
+}
+@layer utilities {
+  @keyframes wave {
+    0%,
+    100% {
+      transform: skewY(0deg);
+    }
+    50% {
+      transform: skewY(1deg) scaleX(1.01);
+    }
+  }
+
+  @keyframes wave-reverse {
+    0%,
+    100% {
+      transform: skewY(0deg) translateY(0);
+    }
+    50% {
+      transform: skewY(-1deg) translateY(-1px);
+    }
+  }
+
+  .animate-wave {
+    animation: wave 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+
+  .animate-wave-reverse {
+    animation: wave-reverse 4s ease-in-out infinite;
+    transform-origin: top center;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }

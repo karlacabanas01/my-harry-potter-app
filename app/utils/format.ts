@@ -11,7 +11,7 @@ export const formatDateOfBirth = (dateString: string): string => {
     return format(parsedDate, "d 'of' MMM, yyyy", { locale: undefined });
   } catch (error) {
     console.error('Error parsing date:', error);
-    return 'Fecha no encontrada';
+    return 'Date not found';
   }
 };
 
